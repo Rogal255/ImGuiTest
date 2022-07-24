@@ -7,6 +7,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
+if (MSVC)
+    add_compile_definitions(MSVC_COMPILER)
+endif ()
+
 
 add_executable(DearImGuiConan main.cpp UseImGui.cpp bindings/imgui_impl_glfw.cpp bindings/imgui_impl_opengl3.cpp)
 target_link_libraries(DearImGuiConan ${CONAN_LIBS})

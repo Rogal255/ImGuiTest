@@ -5,6 +5,12 @@
 #include "bindings/imgui_impl_opengl3.h"
 #include <iostream>
 
+#ifdef MSVC_COMPILER
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
+#endif
+
 int main() {
     if (!glfwInit()) {
         std::cout << "glfw error'\n";
@@ -36,5 +42,10 @@ int main() {
         glfwSwapBuffers(window);
     }
     myimgui.Shutdown();
+    glfwDestroyWindow(window);
+    glfwTerminate();
+#ifdef MSVC_COMPILER
+    _CrtDumpMemoryLeaks();
+#endif
     return 0;
 }

@@ -15,7 +15,6 @@ void UseImGui::Init(GLFWwindow* window, const char* glsl_version) {
 void UseImGui::Update() {
     NewFrame();
     ImGui::Begin("My imgui window");
-    ImGui::
     ImGui::Text("This is my text");
     if (ImGui::Button("Button")) {
         pressed = !pressed;
